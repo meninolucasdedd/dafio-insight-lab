@@ -1,2 +1,2 @@
-# dafio-insight-lab
+# dasafio-insight-lab
 Repositório destinado ao desafio do InsightLab 
