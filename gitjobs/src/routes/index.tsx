@@ -7,7 +7,7 @@ import Jobs from '../pages/Jobs';
 const Routes: React.FC = () =>(
   <Switch>
     <Route  path="/" exact component={Dasboard}/>
-    <Route  path="/jobs" component={Jobs}/>
+    <Route  path="/jobs/:repository+" component={Jobs}/>
   </Switch>
 )
 

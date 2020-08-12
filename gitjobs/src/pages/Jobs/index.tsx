@@ -1,7 +1,14 @@
 import React from 'react';
+import { useRouteMatch} from 'react-router-dom';
+interface RepositoryParams {
+  repository: string;
+
+}
 
 const Jobs: React.FC = () =>{
-  return <h1>Jobs</h1>
+  const { params } = useRouteMatch<RepositoryParams>();
+
+  return <h1>Jobs : {params.repository}</h1>
 }
 
 export default Jobs;

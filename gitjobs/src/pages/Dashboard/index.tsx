@@ -1,10 +1,13 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom'
 import api from '../../services/api';
 
 
 import logoImg from '../../assets/octocat.svg';
+
 import {Title, Form, Repositories, Error } from './styles';
+import Jobs from '../Jobs';
 
 interface Repository {
   title: string;
@@ -14,10 +17,26 @@ interface Repository {
   type:string;
   url: string;
 }
+
 const Dasboard: React.FC = () => {
   const [newRepo, setNewRepo] = useState('');
   const [inputError, setInputError] = useState('');
-  const [repositories, setRepositories] = useState<Repository[]>([]);
+  const [repositories, setRepositories] = useState<Repository[]>(() =>{
+    const storagedRepositories = localStorage.getItem( '@GithubJobsExplorer:repositories');
+
+    if(storagedRepositories){
+      return JSON.parse(storagedRepositories);
+    }else{
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem(
+      '@GithubJobsExplorer:repositories',
+        JSON.stringify(repositories),
+      );
+  }, [repositories])
 
   async function handleAddJobs(
     event: FormEvent<HTMLFormElement>
@@ -30,7 +49,7 @@ const Dasboard: React.FC = () => {
     }
 
     try{
-      const response = await api.get(`positions/2cc06700-d9ac-45ad-9bd7-a7e5d3c29b6f`);
+      const response = await api.get(`positions`);
 
       const repository = response.data;
 
@@ -41,9 +60,6 @@ const Dasboard: React.FC = () => {
     } catch(err){
       setInputError('Erro na busca por este termo')
     }
-
-
-
   }
 
   return(
@@ -63,7 +79,7 @@ const Dasboard: React.FC = () => {
 
       <Repositories>
         {repositories.map( repository =>(
-          <a key={repository.title} href="teste">
+          <Link key={repository.title} to={`/jobs/${repository.title}`}>
           <img
             src="https://i.pinimg.com/236x/dc/ef/3a/dcef3abedf0e0761203aaeb85886a6f3--jedi-knight-open-source.jpg"
             alt="logo"
@@ -77,7 +93,7 @@ const Dasboard: React.FC = () => {
           </div>
 
           <FiChevronRight  size={20}/>
-        </a>
+        </Link>
         ))}
       </Repositories>
     </>
