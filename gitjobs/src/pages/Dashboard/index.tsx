@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import { FiChevronRight } from 'react-icons/fi';
+import { FiChevronRight, FiSearch} from 'react-icons/fi';
 import { Link } from 'react-router-dom'
 import api from '../../services/api';
 
@@ -7,15 +7,16 @@ import api from '../../services/api';
 import logoImg from '../../assets/octocat.svg';
 
 import {Title, Form, Repositories, Error } from './styles';
-import Jobs from '../Jobs';
+
 
 interface Repository {
-  title: string;
-  location: string;
-  company: string;
-  company_url: string;
-  type:string;
-  url: string;
+ id: string;
+ company: string;
+ company_logo: string;
+ company_url: string;
+ location: string;
+ type: string;
+
 }
 
 const Dasboard: React.FC = () => {
@@ -49,7 +50,15 @@ const Dasboard: React.FC = () => {
     }
 
     try{
-      const response = await api.get(`positions`);
+      const response = await api.get(`positions.json?description=${newRepo}&page=1`,
+        { headers:{
+          'Content-Type':'application/json',
+
+          'Access-Control-Allow-Origin': '*'
+        }
+      });
+
+        console.log(response.data)
 
       const repository = response.data;
 
@@ -64,7 +73,7 @@ const Dasboard: React.FC = () => {
 
   return(
     <>
-      <img className="logoOcto"src={logoImg} alt="Github Logo"/>
+      <img src={logoImg} alt="Github Logo"/>
       <Title>Procure uma oportunidade de emprego</Title>
 
       <Form hasError={!!inputError} onSubmit={handleAddJobs}>
@@ -72,23 +81,25 @@ const Dasboard: React.FC = () => {
             value={newRepo}
             onChange={ (e) => setNewRepo(e.target.value)}
             placeholder="Busque por vagas"/>
-          <button type="submit" >Pesquisar</button>
+          <button type="submit" >
+              <FiSearch size={20}/>Pesquisar</button>
       </Form >
-
+        <br></br>
         { inputError && <Error>{inputError}</Error>}
 
       <Repositories>
         {repositories.map( repository =>(
-          <Link key={repository.title} to={`/jobs/${repository.title}`}>
+          <Link key={repository.id} to={`/jobs/${repository.id}`}>
           <img
             src="https://i.pinimg.com/236x/dc/ef/3a/dcef3abedf0e0761203aaeb85886a6f3--jedi-knight-open-source.jpg"
             alt="logo"
           />
           <div>
-            <strong>{repository.title}</strong>
-            <p>{repository.company}</p>
+            <strong>{repository.company}</strong>
+            <p>{repository.company_logo}</p>
             <p>{repository.company_url}</p>
-            <p>Teste</p>
+            <p>{repository.type}</p>
+
 
           </div>
 

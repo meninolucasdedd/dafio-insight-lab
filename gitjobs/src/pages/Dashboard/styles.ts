@@ -6,7 +6,7 @@ interface FormProps{
 }
 export const Title = styled.h1`
   font-size: 50px;
-  color: #3a3a3a;
+  color: #FFF;
   max-width: 700px;
   line-height: 56px;
 
@@ -52,6 +52,11 @@ export const Form = styled.form<FormProps>`
     cursor: pointer;
 
 
+      >svg{
+        margin-right: 10px;
+        align-content: center;
+
+      }
 
     &:hover{
       background: ${shade(0.2, '#04D361')}
