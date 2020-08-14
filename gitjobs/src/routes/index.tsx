@@ -1,13 +1,13 @@
 import React from 'react';
 import { Switch, Route} from 'react-router-dom';
 import Dasboard from '../pages/Dashboard';
-import Jobs from '../pages/Jobs';
+import Job from '../pages/Job';
 
 
 const Routes: React.FC = () =>(
   <Switch>
     <Route  path="/" exact component={Dasboard}/>
-    <Route  path="/jobs/:repository+" component={Jobs}/>
+    <Route  path="/job/:repository+" component={Job}/>
   </Switch>
 )
 

@@ -12,12 +12,12 @@ export default createGlobalStyle`
   }
 
   body{
-    background: #9871F5 url(${githubBackground}) no-repeat 70% top;
+    background: #5c04bd url(${githubBackground}) no-repeat 70% top;
     -webkit-font-smoothing: antialiased;
   }
 
   body, input, button{
-    font: 16px Roboto, sans-serif;
+    font: 16px Poppins, sans-serif;
   }
 
   #root{

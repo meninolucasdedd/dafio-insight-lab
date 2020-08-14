@@ -14,6 +14,13 @@ export const Title = styled.h1`
 
 
 `
+export const Subtitle = styled.h2`
+  font-size: 25px;
+  max-width: 700px;
+  line-height: 56px;
+  color: #fff;
+
+`
 
 export const Form = styled.form<FormProps>`
   margin-top: 40px;
@@ -32,7 +39,8 @@ export const Form = styled.form<FormProps>`
     border-right:0;
 
     ${(props) => props.hasError && css`
-      border-color: #c53030;
+      border-color: #E60F0C;
+      font-weight: bold;
     `}
 
     &::placeholder{
@@ -54,7 +62,7 @@ export const Form = styled.form<FormProps>`
 
       >svg{
         margin-right: 10px;
-        align-content: center;
+
 
       }
 
@@ -65,7 +73,7 @@ export const Form = styled.form<FormProps>`
 `
 export const Error = styled.span`
   display: block;
-  color: #c53030;
+  color: #E60F0C;
   margin-top: 8px;
 
 `;
@@ -125,3 +133,52 @@ export const Repositories = styled.div`
 
   }
 `;
+
+export const FeaturedJobs = styled.div`
+
+
+`
+export const Menu = styled.h3`
+  font-size: 14px;
+  color: #FFF;
+  font-weight: 100;
+`;
+
+export const Footer = styled.footer`
+    margin-top: 80px;
+    max-width: 700px;
+
+    div{
+      background: #04D361 ;
+      border-radius: 5px;
+      width: 100%;
+      padding: 24px;
+      display: block;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      transition: transform 0.2s;
+
+      & + div {
+       margin-top: 16px;
+      }
+
+      img {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+      }
+
+      button {
+        width: 210px;
+        height: 70px;
+        background: transparent;
+        border-radius: 0px 5px 5px 0px;
+        border:0;
+        color: #FFF;
+        font-weight: 400;
+        cursor: pointer;
+
+      }
+}
+`

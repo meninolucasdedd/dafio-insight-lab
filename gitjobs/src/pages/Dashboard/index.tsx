@@ -6,7 +6,7 @@ import api from '../../services/api';
 
 import logoImg from '../../assets/octocat.svg';
 
-import {Title, Form, Repositories, Error } from './styles';
+import {Title, Subtitle,Form, Repositories, Error, FeaturedJobs, Menu, Footer } from './styles';
 
 
 interface Repository {
@@ -74,7 +74,7 @@ const Dasboard: React.FC = () => {
   return(
     <>
       <img src={logoImg} alt="Github Logo"/>
-      <Title>Procure uma oportunidade de emprego</Title>
+      <Title>Procure por uma oportunidade de emprego</Title>
 
       <Form hasError={!!inputError} onSubmit={handleAddJobs}>
           <input
@@ -82,14 +82,23 @@ const Dasboard: React.FC = () => {
             onChange={ (e) => setNewRepo(e.target.value)}
             placeholder="Busque por vagas"/>
           <button type="submit" >
-              <FiSearch size={20}/>Pesquisar</button>
+              <FiSearch size={20}/>
+              Pesquisar
+          </button>
       </Form >
         <br></br>
         { inputError && <Error>{inputError}</Error>}
 
+      <FeaturedJobs>
+          <Subtitle>
+            Empregos em Destaque
+          </Subtitle>
+      </FeaturedJobs>
+
       <Repositories>
         {repositories.map( repository =>(
-          <Link key={repository.id} to={`/jobs/${repository.id}`}>
+
+          <Link key={repository.company} to={`/job/${repository.id}`}>
           <img
             src="https://i.pinimg.com/236x/dc/ef/3a/dcef3abedf0e0761203aaeb85886a6f3--jedi-knight-open-source.jpg"
             alt="logo"
@@ -99,14 +108,29 @@ const Dasboard: React.FC = () => {
             <p>{repository.company_logo}</p>
             <p>{repository.company_url}</p>
             <p>{repository.type}</p>
-
-
           </div>
 
           <FiChevronRight  size={20}/>
         </Link>
         ))}
       </Repositories>
+
+      <Footer>
+          <div>
+          <img src={logoImg} alt="Github Logo"/>
+            <Link to={'/teste'}>
+              <button type="submit" >
+               All Jobs
+              </button>
+            </Link>
+            <button type="submit" >
+              Add Jobs
+            </button>
+
+            <button type="submit" >How It Works</button>
+          </div>
+      </Footer>
+
     </>
   )
 }
