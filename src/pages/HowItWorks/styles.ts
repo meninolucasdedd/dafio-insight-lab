@@ -9,7 +9,7 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #fff;
+    color: #3D3D4D;
     font-size: 25px;
     transition: color 0.2s;
 
@@ -20,94 +20,49 @@ export const Header = styled.header`
     svg{
       margin-right: 4px;
     }
-
-    button{
-      width: 210px;
-      height: 70px;
-      background: #04D361;
-      border-radius: 0px 5px 5px 0px;
-      border:0;
-      color: #FFF;
-      font-weight: bold;
-      transition: background-color 0.2s;
-      cursor: pointer;
-    }
   }
 
 `;
 
-export const JobInfo = styled.section`
-    margin-top: 70px;
+export const HowItWorkInfo = styled.section`
+  margin-top: 70px;
+  max-width: 700px;
+  text-align: justify
 
-    header{
-      display: flex;
-      align-items: center;
 
-      img{
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-    }
+`;
 
-    div{
-      margin-left: 24px;
+export const Subtitle = styled.h2`
+  font-size: 25px;
+  max-width: 700px;
+  line-height: 56px;
+  font-family: Poppins, sans-serif;
+  padding-bottom: 10px;
+  color: #3D3D4D;
 
-      strong{
-        font-size: 36px;
-        color: #FFF;
-      }
-
-      p {
-        font-size: 18px;
-        color: #fff;
-        margin-top: 4px;
-      }
-    }
-  }
-
-  ul{
+  svg{
     display: flex;
-    list-style: none;
-    margin-top: 40px;
-
-    li{
-      & +li {
-        margin-left: 80px;
-      }
-    }
-
-    li {
-      strong{
-        display: block;
-        font-size: 36px;
-        color: #fff;
-      }
-
-      span{
-        display: block;
-        margin-top: 4px;
-        color: #fff;
-      }
-    }
+    align-items: center;
 
   }
-
-`;
+`
 
 export const Card = styled.div`
   margin-top: 80px;
-
+  max-width: 900px;
 
   a{
+
+    justify-content: space-between;
     background: #fff;
     border-radius: 5px;
-    width: 100%;
     padding: 24px;
     display: block;
     text-decoration: none;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     transition: transform 0.2s;
+    text-align: justify;
 
      & + a {
        margin-top: 16px;
@@ -117,23 +72,30 @@ export const Card = styled.div`
      transform: translateX(10px)
     }
 
-
-
-
     div {
       margin: 16px;
       flex: 1;
 
+
+
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+      }
 
       strong{
         font-size: 20px;
         color: #3D3D4D;
       }
 
+
+
       P {
         font-size: 18px;
         color: #A8A8B3;
         margin-top: 4px;
+        text-align: justify;
       }
     }
 
@@ -146,3 +108,4 @@ export const Card = styled.div`
 
   }
 `;
+

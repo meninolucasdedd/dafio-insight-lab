@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
-import { FiChevronLeft, FiChevronRight, FiMapPin, FiCode, FiClock, FiUserPlus} from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight, FiMapPin, FiClock, FiUserPlus} from 'react-icons/fi';
 import api from '../../services/api';
 
 import logoImg from '../../assets/octocat.svg';
@@ -34,6 +34,10 @@ const Job: React.FC = () =>{
       api.get(`${params.repository}`).then(response=>{
         console.log(response.data)
       })
+
+      api.get(`${params.repository}/positions`).then(response=>{
+        console.log(response.data)
+      })
   },[params.repository])
 
   return(
@@ -65,12 +69,6 @@ const Job: React.FC = () =>{
         </li>
         <li>
           <strong>
-            <FiCode size={70}/>
-          </strong>
-          <span>ReactJs</span>
-        </li>
-        <li>
-          <strong>
             <FiClock size={70}></FiClock>
           </strong>
           <span>Full Time</span>
@@ -92,11 +90,6 @@ const Job: React.FC = () =>{
           descrição da vaga aqui
         </div>
         <div>
-        Verition Fund Management is looking to hire a Senior Developer to join the Firm’s low latency trading platform team. The role is full time, and can be remote for the right candidate.
-
-Required: -Advanced hands on C++ 11/14/17 experience developing multithreaded applications -Experience debugging with gdb -Experience writing in Python (pandas, numpy) as well as Bash and GTest -Experienced on linux systems -Familiar with git, TCP/IP, UDP, ZMQ (or other messaging libraries)
-
-The following would be a plus: -Work experience in financial industry, specifically on low latency trading systems -Experience in market data feed handlers and order entry protocols, specifically FIX, BPIPE, etc -Familiarity with Jenkins, Ansible
         </div>
       </div>
 

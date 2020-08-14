@@ -110,8 +110,8 @@ export const Repositories = styled.div`
 
 
     img {
-      width: 80px;
-      height: 80px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
     }
 
@@ -125,7 +125,7 @@ export const Repositories = styled.div`
         color: #3D3D4D;
       }
 
-      P {
+      p {
         font-size: 18px;
         color: #A8A8B3;
         margin-top: 4px;
@@ -142,10 +142,7 @@ export const Repositories = styled.div`
   }
 `;
 
-export const FeaturedJobs = styled.div`
 
-
-`
 export const Menu = styled.h3`
   font-size: 14px;
   color: #FFF;
