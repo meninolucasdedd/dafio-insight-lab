@@ -138,6 +138,13 @@ const Dasboard: React.FC = () => {
               </button>
             </Link>
 
+            <Link to={'/api'}>
+              <button type="submit" >
+                Doumentação API
+              </button>
+            </Link>
+
+
           </div>
       </Footer>
 
