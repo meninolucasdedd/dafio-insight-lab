@@ -9,7 +9,8 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #a8a8b3;
+    color: #fff;
+    font-size: 25px;
     transition: color 0.2s;
 
     &:hover{
@@ -53,12 +54,12 @@ export const JobInfo = styled.section`
 
       strong{
         font-size: 36px;
-        color: #3d3d4d;
+        color: #FFF;
       }
 
       p {
         font-size: 18px;
-        color: #737380;
+        color: #fff;
         margin-top: 4px;
       }
     }
@@ -79,13 +80,13 @@ export const JobInfo = styled.section`
       strong{
         display: block;
         font-size: 36px;
-        color: #3d3d4d;
+        color: #fff;
       }
 
       span{
         display: block;
         margin-top: 4px;
-        color: #6c6c80;
+        color: #fff;
       }
     }
 

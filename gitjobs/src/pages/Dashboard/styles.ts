@@ -18,7 +18,15 @@ export const Subtitle = styled.h2`
   font-size: 25px;
   max-width: 700px;
   line-height: 56px;
+  font-family: Poppins, sans-serif;
+  padding-bottom: 10px;
   color: #fff;
+
+  svg{
+    display: flex;
+    align-items: center;
+
+  }
 
 `
 

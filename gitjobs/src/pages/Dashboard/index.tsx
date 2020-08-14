@@ -1,12 +1,21 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import { FiChevronRight, FiSearch} from 'react-icons/fi';
+import { FiChevronRight, FiSearch, FiFileText, FiBarChart2} from 'react-icons/fi';
 import { Link } from 'react-router-dom'
 import api from '../../services/api';
 
 
 import logoImg from '../../assets/octocat.svg';
 
-import {Title, Subtitle,Form, Repositories, Error, FeaturedJobs, Menu, Footer } from './styles';
+import {
+  Title,
+  Subtitle,
+  Form,
+  Repositories,
+  Error,
+  FeaturedJobs,
+  Menu,
+  Footer
+} from './styles';
 
 
 interface Repository {
@@ -91,27 +100,30 @@ const Dasboard: React.FC = () => {
 
       <FeaturedJobs>
           <Subtitle>
+            <FiBarChart2 size={35}/>
             Empregos em Destaque
           </Subtitle>
       </FeaturedJobs>
 
       <Repositories>
-        {repositories.map( repository =>(
+          <Subtitle>
+           <FiFileText size={35}/>
+            Histórico de pesquisa
+          </Subtitle>
+              {repositories.map( repository =>(
+                <Link key={repository.company} to={`/job/${repository.id}`}>
+                <img
+                  src="https://i.pinimg.com/236x/dc/ef/3a/dcef3abedf0e0761203aaeb85886a6f3--jedi-knight-open-source.jpg"
+                  alt="logo"
+                />
+                <div>
+                  <strong>FUNCAP</strong>
+                  <p>Vaga de ReactJS</p>
+                  <span>Clique para mais detalhes</span>
+                </div>
 
-          <Link key={repository.company} to={`/job/${repository.id}`}>
-          <img
-            src="https://i.pinimg.com/236x/dc/ef/3a/dcef3abedf0e0761203aaeb85886a6f3--jedi-knight-open-source.jpg"
-            alt="logo"
-          />
-          <div>
-            <strong>{repository.company}</strong>
-            <p>{repository.company_logo}</p>
-            <p>{repository.company_url}</p>
-            <p>{repository.type}</p>
-          </div>
-
-          <FiChevronRight  size={20}/>
-        </Link>
+                <FiChevronRight  size={20}/>
+              </Link>
         ))}
       </Repositories>
 
