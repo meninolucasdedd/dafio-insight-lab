@@ -24,9 +24,9 @@ interface Repository {
 
  }
 
-const Job: React.FC = () =>{
+const HowItWorks: React.FC = () =>{
   const [repository, setRepository] = useState<Repository | null>(null);
-  const [job, setJob] = useState([]);
+  const [job, setJob] =useState([]);
 
   const { params } = useRouteMatch<RepositoryParams>();
 
@@ -34,7 +34,7 @@ const Job: React.FC = () =>{
       api.get(`${params.repository}`).then(response=>{
         console.log(response.data)
       })
-  },[params.repository])
+  },[params.repository]) //eslint-disable-line
 
   return(
     <>
@@ -52,7 +52,7 @@ const Job: React.FC = () =>{
         <img src="https://avatars0.githubusercontent.com/u/27828411?s=460&u=d62a87ca26c7062bb9284972dc83ca1fe926e658&v=4"
         alt="avatar" />
         <div>
-          <strong>{params.repository}</strong>
+          <strong>RocketSeat </strong>
           <p>Descrição da vaga</p>
         </div>
       </header>
@@ -107,4 +107,4 @@ The following would be a plus: -Work experience in financial industry, specifica
   )
 }
 
-export default Job;
+export default HowItWorks;

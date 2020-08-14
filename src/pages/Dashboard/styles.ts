@@ -6,7 +6,7 @@ interface FormProps{
 }
 export const Title = styled.h1`
   font-size: 50px;
-  color: #FFF;
+  color: #3A3A3A;
   max-width: 700px;
   line-height: 56px;
 
@@ -20,7 +20,7 @@ export const Subtitle = styled.h2`
   line-height: 56px;
   font-family: Poppins, sans-serif;
   padding-bottom: 10px;
-  color: #fff;
+  color: #3D3D4D;
 
   svg{
     display: flex;
@@ -110,8 +110,8 @@ export const Repositories = styled.div`
 
 
     img {
-      width: 64px;
-      height: 64px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
     }
 

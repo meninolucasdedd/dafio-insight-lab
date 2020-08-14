@@ -9,7 +9,7 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #3D3D4D;
+    color: #fff;
     font-size: 25px;
     transition: color 0.2s;
 
@@ -27,7 +27,7 @@ export const Header = styled.header`
       background: #04D361;
       border-radius: 0px 5px 5px 0px;
       border:0;
-      color: #3D3D4D;
+      color: #FFF;
       font-weight: bold;
       transition: background-color 0.2s;
       cursor: pointer;
@@ -54,7 +54,7 @@ export const JobInfo = styled.section`
 
       strong{
         font-size: 36px;
-        color: #3D3D4D;
+        color: #FFF;
       }
 
       p {
@@ -96,7 +96,6 @@ export const JobInfo = styled.section`
 
 export const Card = styled.div`
   margin-top: 80px;
-  max-width: 800px;
 
 
   a{

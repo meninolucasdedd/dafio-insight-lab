@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import { FiChevronRight, FiSearch, FiFileText, FiBarChart2} from 'react-icons/fi';
+import { FiChevronRight, FiSearch, FiFileText, FiZoomIn} from 'react-icons/fi';
 import { Link } from 'react-router-dom'
 import api from '../../services/api';
 
@@ -13,16 +13,17 @@ import {
   Repositories,
   Error,
   FeaturedJobs,
-  Menu,
   Footer
 } from './styles';
 
 
 interface Repository {
- id: string;
+id: string;
+ title: string;
  company: string;
  company_logo: string;
  company_url: string;
+ created_at: string;
  location: string;
  type: string;
 
@@ -59,7 +60,7 @@ const Dasboard: React.FC = () => {
     }
 
     try{
-      const response = await api.get(`positions.json?description=${newRepo}&page=1`,
+      const response = await api.get(`positions.json?description=${newRepo}&localtion=`,
         { headers:{
           'Content-Type':'application/json',
 
@@ -67,11 +68,12 @@ const Dasboard: React.FC = () => {
         }
       });
 
-        console.log(response.data)
+        console.log(response.data);
+        console.log(repositories)
 
       const repository = response.data;
 
-      setRepositories([ ...repositories, repository])
+      setRepositories(repository.concat(repositories))
       setNewRepo('');
       setInputError('');
 
@@ -89,7 +91,7 @@ const Dasboard: React.FC = () => {
           <input
             value={newRepo}
             onChange={ (e) => setNewRepo(e.target.value)}
-            placeholder="Busque por vagas"/>
+            placeholder="Pesquise por título, benefícios, empresas, expertise"/>
           <button type="submit" >
               <FiSearch size={20}/>
               Pesquisar
@@ -98,28 +100,24 @@ const Dasboard: React.FC = () => {
         <br></br>
         { inputError && <Error>{inputError}</Error>}
 
-      <FeaturedJobs>
-          <Subtitle>
-            <FiBarChart2 size={35}/>
-            Empregos em Destaque
-          </Subtitle>
-      </FeaturedJobs>
 
       <Repositories>
           <Subtitle>
-           <FiFileText size={35}/>
-            Histórico de pesquisa
+           <FiZoomIn size={35}/>
+           Resultado da pesquisa
           </Subtitle>
               {repositories.map( repository =>(
-                <Link key={repository.company} to={`/job/${repository.id}`}>
+                <Link key={repository.id} to={`/job/${repository.title}`}>
                 <img
-                  src="https://i.pinimg.com/236x/dc/ef/3a/dcef3abedf0e0761203aaeb85886a6f3--jedi-knight-open-source.jpg"
+                  src={repository.company_logo}
                   alt="logo"
                 />
                 <div>
-                  <strong>FUNCAP</strong>
-                  <p>Vaga de ReactJS</p>
-                  <span>Clique para mais detalhes</span>
+                  <strong>{repository.title}</strong>
+                  <p>{repository.company}</p>
+                  <p>Vaga disponibilizada em:</p>
+                  <span>{repository.created_at}</span>
+
                 </div>
 
                 <FiChevronRight  size={20}/>
