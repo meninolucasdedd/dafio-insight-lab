@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import { FiChevronRight, FiGithub, FiSearch, FiDelete} from 'react-icons/fi';
+import { FiChevronRight, FiGithub, FiSearch, FiCreditCard} from 'react-icons/fi';
 import { Link } from 'react-router-dom'
 import api from '../../services/api';
 
@@ -7,12 +7,13 @@ import logoImg from '../../assets/octocat.svg';
 import logo from '../../assets/logo.png'
 
 import {
+  Header,
   Title,
   Subtitle,
   Form,
   Repositories,
   Error,
-  Footer
+  Footer,
 } from './styles';
 
 
@@ -89,7 +90,17 @@ const Dasboard: React.FC = () => {
 
   return(
     <>
-      <img src={logo} alt="Github Logo"/>
+
+      <Header>
+        <img src={logo} alt="Github Logo"/>
+        <Link to={'/howitwork'}>
+          <button type="submit" >
+          <FiCreditCard size={20}/>
+            How it Works
+          </button>
+        </Link>
+      </Header>
+
       <Title>Procure por uma oportunidade de emprego</Title>
 
       <Form hasError={!!inputError} onSubmit={handleAddJobs}>
@@ -133,22 +144,19 @@ const Dasboard: React.FC = () => {
       <Footer>
           <div>
           <img src={logoImg} alt="Github Logo"/>
-            <Link to={'/howitwork'}>
-              <button type="submit" >
-              How It Works
-              </button>
-            </Link>
             <a href='https://jobs.github.com/post'>
               <button type="submit" >
-                Publique
+                Publique no Git
               </button>
             </a>
 
             <Link to={'/api'}>
               <button type="submit" >
-                API
+                Documentação API
               </button>
             </Link>
+
+            <span>Feito com amor 😍</span>
 
           </div>
       </Footer>

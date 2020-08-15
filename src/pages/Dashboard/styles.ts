@@ -4,6 +4,60 @@ import {shade} from 'polished';
 interface FormProps{
   hasError: boolean;
 }
+
+export const Header = styled.header`
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #3D3D4D;
+    font-size: 25px;
+
+
+    &:hover{
+      color: #666;
+    }
+
+    svg{
+      margin-right: 4px;
+    }
+
+    button{
+      width: 210px;
+      height: 70px;
+      background: #04D361;
+      border-radius: 5px 5px 5px 5px;
+      border:0;
+      color: #fff;
+      font-weight: bold;
+      transition: background-color 0.2s;
+      cursor: pointer;
+
+      svg{
+        margin-right: 10px;
+      }
+
+      &:hover{
+        background: ${shade(0.2, '#04D361')}
+      }
+
+    }
+  }
+
+`;
+
+export const HowItWorkInfo = styled.section`
+  margin-top: 70px;
+  max-width: 700px;
+  text-align: justify
+
+
+`;
 export const Title = styled.h1`
   font-size: 50px;
   color: #3A3A3A;
@@ -195,6 +249,11 @@ export const Footer = styled.footer`
         font-weight: 400;
         cursor: pointer;
 
+
+      }
+      span{
+        color: #fff;
+        text-justify: center;
       }
 }
 `
