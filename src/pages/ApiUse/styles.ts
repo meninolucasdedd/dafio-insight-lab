@@ -76,19 +76,10 @@ export const Card = styled.div`
       margin: 16px;
       flex: 1;
 
-
-
-      img {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-      }
-
       strong{
         font-size: 20px;
         color: #3D3D4D;
       }
-
 
 
       P {
@@ -101,7 +92,8 @@ export const Card = styled.div`
 
     svg{
       margin-left: auto;
-      color: #cbcbd6;
+      margin-right: 16px;
+      color: #47248f;
     }
 
 

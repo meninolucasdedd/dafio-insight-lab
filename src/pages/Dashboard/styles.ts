@@ -59,7 +59,7 @@ export const Form = styled.form<FormProps>`
   button{
     width: 210px;
     height: 70px;
-    background: #04D361;
+    background: #470393;
     border-radius: 0px 5px 5px 0px;
     border:0;
     color: #FFF;
@@ -68,23 +68,30 @@ export const Form = styled.form<FormProps>`
     cursor: pointer;
 
 
-      >svg{
+      > svg{
+        flex: 1 ;
+        justify-content: center;
         margin-right: 10px;
+        padding-top: 2px;
+
 
 
       }
 
     &:hover{
-      background: ${shade(0.2, '#04D361')}
+      background: ${shade(0.2, '#470393')}
     }
   }
 `
+
 export const Error = styled.span`
   display: block;
   color: #E60F0C;
   margin-top: 8px;
 
 `;
+
+
 export const Repositories = styled.div`
   margin-top: 80px;
   max-width: 700px;
@@ -134,7 +141,11 @@ export const Repositories = styled.div`
 
     svg{
       margin-left: auto;
-      color: #cbcbd6;
+      color: #470393;
+
+      &:hover{
+        color: ${shade(0.2, '#470393')}
+      }
     }
 
 

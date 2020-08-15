@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import { FiChevronRight, FiGithub, FiSearch} from 'react-icons/fi';
+import { FiChevronRight, FiGithub, FiSearch, FiDelete} from 'react-icons/fi';
 import { Link } from 'react-router-dom'
 import api from '../../services/api';
 
@@ -29,10 +29,12 @@ interface Repository {
 }
 
 const Dasboard: React.FC = () => {
+
   const [newRepo, setNewRepo] = useState('');
   const [inputError, setInputError] = useState('');
   const [repositories, setRepositories] = useState<Repository[]>(() =>{
   const storagedRepositories = localStorage.getItem( '@GithubJobsExplorer:repositories');
+
 
     if(storagedRepositories){
       return JSON.parse(storagedRepositories);
@@ -41,6 +43,7 @@ const Dasboard: React.FC = () => {
     }
   });
 
+
   useEffect(() => {
     localStorage.setItem(
       '@GithubJobsExplorer:repositories',
@@ -48,27 +51,24 @@ const Dasboard: React.FC = () => {
       );
   }, [repositories])
 
-  async function handleAddJobs(
-    event: FormEvent<HTMLFormElement>
-    ): Promise<void>{
+
+
+  async function handleAddJobs( event: FormEvent<HTMLFormElement>):
+   Promise<void>{
       event.preventDefault();
 
     if(!newRepo){
       setInputError('Ops! Você precisa inserir o título/descrição da vaga para pesquisar');
       return;
     }
-
-    try{
-      const response = await api.get(`positions.json?description=${newRepo}&localtion=`,
+    try {
+      const response = await api.get(`positions.json?description=${newRepo}`,
         { headers:{
           'Content-Type':'application/json',
 
           'Access-Control-Allow-Origin': '*'
         }
       });
-
-        console.log(response.data);
-        console.log(repositories)
 
       const repository = response.data;
 
@@ -103,13 +103,10 @@ const Dasboard: React.FC = () => {
           </button>
       </Form >
 
-
-
         <br></br>
         { inputError && <Error>{inputError}</Error>}
 
         <p>Veja abaixo o resultado da sua pesquisa</p>
-
 
       <Repositories>
           <Subtitle>
@@ -128,7 +125,7 @@ const Dasboard: React.FC = () => {
                   <p>Tipo da vaga: <strong className="typeJob">{repository.type}</strong></p>
                 </div>
 
-                <FiChevronRight  size={20}/>
+                <FiChevronRight  size={25}/>
               </Link>
         ))}
       </Repositories>
@@ -152,6 +149,7 @@ const Dasboard: React.FC = () => {
                 API
               </button>
             </Link>
+
           </div>
       </Footer>
 
