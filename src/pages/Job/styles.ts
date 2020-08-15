@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {shade} from 'polished';
 
 export const Header = styled.header`
   display: flex;
@@ -18,15 +19,11 @@ export const Header = styled.header`
       color: #666;
     }
 
-    svg{
-      margin-right: 4px;
-    }
-
     button{
       width: 210px;
       height: 70px;
       background: #04D361;
-      border-radius: 0px 5px 5px 0px;
+      border-radius: 5px 5px 5px 5px;
       border:0;
       color: #3D3D4D;
       font-weight: bold;
@@ -60,7 +57,7 @@ export const JobInfo = styled.section`
 
       p {
         font-size: 18px;
-        color: #fff;
+        color: #A8A8B3;
         margin-top: 4px;
       }
     }
@@ -79,15 +76,40 @@ export const JobInfo = styled.section`
 
     li {
       strong{
+
         display: block;
         font-size: 36px;
-        color: #fff;
+        color:#3D3D4D;
       }
+
+      button{
+          width: 140px;
+          height: 140px;
+          background: #04D361;
+          border-radius: 5px 5px 5px 5px;
+          border:0;
+          font-weight: bold;
+          transition: background-color 0.2s;
+          cursor: pointer;
+          svg{
+            color: #fff;
+          }
+
+          &:hover{
+           background: ${shade(0.2, '#04D361')}
+          }
+
+          a{
+            text-decoration: none;
+            color: #fff
+          }
+        }
 
       span{
         display: block;
         margin-top: 4px;
-        color: #fff;
+        color: #A8A8B3;
+        text-align: center;
       }
     }
 
@@ -101,6 +123,7 @@ export const Card = styled.div`
 
 
   a{
+
     background: #fff;
     border-radius: 5px;
     width: 100%;
@@ -132,7 +155,7 @@ export const Card = styled.div`
         color: #3D3D4D;
       }
 
-      P {
+      p{
         font-size: 18px;
         color: #A8A8B3;
         margin-top: 4px;

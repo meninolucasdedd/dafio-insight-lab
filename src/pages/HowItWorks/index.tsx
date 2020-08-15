@@ -43,7 +43,7 @@ const HowItWorks: React.FC = () =>{
     </Card>
     <Card>
      <Link to={'mailto:jobs@github.com'}>
-      <img src="https://images.vexels.com/media/users/3/156664/isolated/preview/79dda474731e3d8a731a5a82c9ecc9f4-cart--o-de-cr--dito-frente---cone-de-volta-by-vexels.png" alt="Passo 01" />
+      <img src="https://jobs.github.com/images/modules/faq/screenshot-editor.jpg" alt="Passo 01" />
       <div>
         <strong>
           Pague com um dos principais cartões de crédito

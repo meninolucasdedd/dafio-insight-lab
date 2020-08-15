@@ -101,6 +101,9 @@ const Dasboard: React.FC = () => {
               Pesquisar
           </button>
       </Form >
+
+
+
         <br></br>
         { inputError && <Error>{inputError}</Error>}
 
@@ -137,14 +140,17 @@ const Dasboard: React.FC = () => {
               How It Works
               </button>
             </Link>
+            <a href='https://jobs.github.com/post'>
+              <button type="submit" >
+                Publique
+              </button>
+            </a>
 
             <Link to={'/api'}>
               <button type="submit" >
-                Doumentação API
+                API
               </button>
             </Link>
-
-
           </div>
       </Footer>
 

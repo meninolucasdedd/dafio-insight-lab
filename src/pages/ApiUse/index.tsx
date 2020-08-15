@@ -70,7 +70,25 @@ const ApiUse: React.FC = () =>{
                 <li><b>lat</b>- Uma latitude específica. Ou usado, você também deve enviar muito tempo e não deve enviar localização.</li>
                 <li><b>long</b>- Uma longitude específica. Se usado, você também deve enviar lat e não deve enviar localização </li>
                 <li><b>full_time</b>- Se você quiser limitar os resultados a posições de tempo integral, defina este parâmetro como 'verdadeiro'. </li>
+              </ul>
 
+            </div>
+            <hr></hr>
+            <br></br>
+            <strong>GET /positions/ID.json</strong>
+            <br></br>
+            <div>
+              <p>Recupere a representação JSON de um único anúncio de emprego.</p>
+              <br></br>
+              <p>Parameters</p>
+              <br></br>
+              <ul>
+                <li><b>markdown</b>- Defina como 'true' para obter os campos de <code>description</code> e <code>how_to_apply</code> como <b>Markdown.</b></li>
+              </ul>
+              <br></br>
+              <ul>
+                <li>https://jobs.github.com/positions/21516.json</li>
+                <li>https://jobs.github.com/positions/21516.json?markdown=true</li>
               </ul>
 
             </div>
