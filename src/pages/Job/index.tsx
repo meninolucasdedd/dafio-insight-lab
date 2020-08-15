@@ -4,6 +4,7 @@ import { FiChevronLeft, FiChevronRight, FiMapPin, FiClock, FiUserPlus} from 'rea
 import api from '../../services/api';
 
 import logoImg from '../../assets/octocat.svg';
+import logo from '../../assets/logo.png'
 import { Header, JobInfo, Card } from './styles';
 
 
@@ -44,7 +45,7 @@ const Job: React.FC = () =>{
     <>
     <Header>
 
-      <img src={logoImg} alt="Avatar Empresa"/>
+      <img src={logo} alt="Avatar Empresa"/>
         <Link to="/">
           <FiChevronLeft size={16}/>
             Voltar

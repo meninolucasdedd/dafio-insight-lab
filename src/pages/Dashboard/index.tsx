@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import api from '../../services/api';
 
 import logoImg from '../../assets/octocat.svg';
+import logo from '../../assets/logo.png'
 
 import {
   Title,
@@ -88,7 +89,7 @@ const Dasboard: React.FC = () => {
 
   return(
     <>
-      <img src={logoImg} alt="Github Logo"/>
+      <img src={logo} alt="Github Logo"/>
       <Title>Procure por uma oportunidade de emprego</Title>
 
       <Form hasError={!!inputError} onSubmit={handleAddJobs}>
