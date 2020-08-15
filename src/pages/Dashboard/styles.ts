@@ -11,13 +11,12 @@ export const Header = styled.header`
   align-items: center;
   justify-content: space-between;
 
-  a {
+  a{
     display: flex;
     align-items: center;
     text-decoration: none;
     color: #3D3D4D;
     font-size: 25px;
-
 
     &:hover{
       color: #666;
@@ -54,12 +53,12 @@ export const Header = styled.header`
 export const HowItWorkInfo = styled.section`
   margin-top: 70px;
   max-width: 700px;
-  text-align: justify
+  text-align: justify;
 
 
 `;
 export const Title = styled.h1`
-  font-size: 50px;
+  font-size: 40px;
   color: #3A3A3A;
   max-width: 700px;
   line-height: 56px;

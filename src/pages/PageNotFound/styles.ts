@@ -24,7 +24,7 @@ export const Header = styled.header`
 
 `;
 
-export const HowItWorkInfo = styled.section`
+export const PageError = styled.section`
   margin-top: 70px;
   max-width: 700px;
   text-align: justify;

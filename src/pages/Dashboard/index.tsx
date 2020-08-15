@@ -90,15 +90,8 @@ const Dasboard: React.FC = () => {
 
   return(
     <>
-
       <Header>
         <img src={logo} alt="Github Logo"/>
-        <Link to={'/howitwork'}>
-          <button type="submit" >
-          <FiCreditCard size={20}/>
-            How it Works
-          </button>
-        </Link>
       </Header>
 
       <Title>Procure por uma oportunidade de emprego</Title>
@@ -156,7 +149,11 @@ const Dasboard: React.FC = () => {
               </button>
             </Link>
 
-            <span>Feito com amor 😍</span>
+            <span>
+              Feito com amor 😍
+              <span>Por Lucas Silva 😍</span>
+            </span>
+
 
           </div>
       </Footer>
