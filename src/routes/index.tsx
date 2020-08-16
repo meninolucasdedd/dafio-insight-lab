@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route} from 'react-router-dom';
 import Dasboard from '../pages/Dashboard';
-import Job from '../pages/Job';
+import Job from '../pages/JobDetail';
 import howitwork from '../pages/HowItWorks';
 import api from '../pages/ApiUse';
 import pagenotfound from '../pages/PageNotFound';
@@ -14,7 +14,7 @@ const Routes: React.FC = () =>(
     <Route  path="/api" component={api}/>
     <Route  path="/job/:repository+" component={Job}/>
     <Route  path="/howitwork" component={howitwork}/>
-    <Route  component={pagenotfound} />
+    <Route path="*" redirect component={pagenotfound} />
 
   </Switch>
 )

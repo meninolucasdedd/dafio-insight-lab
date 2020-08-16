@@ -10,26 +10,16 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #3D3D4D;
+    color: #fff;
     font-size: 25px;
     transition: color 0.2s;
     list-style: none;
 
     &:hover{
-      color: #666;
+      color: #fff;
     }
 
-    button{
-      width: 210px;
-      height: 70px;
-      background: #04D361;
-      border-radius: 5px 5px 5px 5px;
-      border:0;
-      color: #3D3D4D;
-      font-weight: bold;
-      transition: background-color 0.2s;
-      cursor: pointer;
-    }
+
   }
 
 `;
@@ -42,8 +32,8 @@ export const JobInfo = styled.section`
       align-items: center;
 
       img{
-      width: 120px;
-      height: 120px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
     }
 
@@ -52,7 +42,7 @@ export const JobInfo = styled.section`
 
       strong{
         font-size: 36px;
-        color: #3D3D4D;
+        color: #fff;
       }
 
       p {
@@ -79,7 +69,7 @@ export const JobInfo = styled.section`
 
         display: block;
         font-size: 36px;
-        color:#3D3D4D;
+        color:#fff;
       }
 
       button{

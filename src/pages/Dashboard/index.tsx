@@ -1,17 +1,22 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import { FiChevronRight, FiGithub, FiSearch, FiCreditCard} from 'react-icons/fi';
 import { Link } from 'react-router-dom'
 import api from '../../services/api';
 
 import logoImg from '../../assets/octocat.svg';
 import logo from '../../assets/logo.png'
+import {
+  FiChevronRight,
+  FiGithub,
+  FiSearch,
+  FiAlertTriangle
+} from 'react-icons/fi';
+
 
 import {
-  Header,
   Title,
   Subtitle,
   Form,
-  Repositories,
+  Jobs,
   Error,
   Footer,
 } from './styles';
@@ -33,7 +38,7 @@ const Dasboard: React.FC = () => {
 
   const [newRepo, setNewRepo] = useState('');
   const [inputError, setInputError] = useState('');
-  const [repositories, setRepositories] = useState<Repository[]>(() =>{
+  const [jobs, setJobs] = useState<Repository[]>(() =>{
   const storagedRepositories = localStorage.getItem( '@GithubJobsExplorer:repositories');
 
 
@@ -48,9 +53,9 @@ const Dasboard: React.FC = () => {
   useEffect(() => {
     localStorage.setItem(
       '@GithubJobsExplorer:repositories',
-        JSON.stringify(repositories),
+        JSON.stringify(jobs),
       );
-  }, [repositories])
+  }, [jobs])
 
 
 
@@ -59,28 +64,33 @@ const Dasboard: React.FC = () => {
       event.preventDefault();
 
     if(!newRepo){
-      setInputError('Ops! Você precisa inserir o título/descrição da vaga para pesquisar');
+      setInputError('OPS! Você precisa inserir o título/descrição da vaga para pesquisar. Tente novamente!');
       return;
     }
+
     try {
       const response = await api.get(`positions.json?description=${newRepo}`,
-        { headers:{
-          'Content-Type':'application/json',
+        {
+          headers:{
+            'Content-Type':'application/json',
 
-          'Access-Control-Allow-Origin': '*'
+            'Access-Control-Allow-Origin': '*'
         }
       });
 
       const repository = response.data;
 
-      setRepositories(repository.concat(repositories))
+      setJobs(repository.concat(jobs));
+
+      console.log(response.data);
+
       setNewRepo('');
       setInputError('');
 
     } catch(err){
 
-      if(err === 400){
-        setInputError('Termo não encontrado')
+      if(err === 404){
+        setInputError('Limite da api atingido')
       }
       else{
         setInputError('Erro na busca por este termo')
@@ -90,49 +100,49 @@ const Dasboard: React.FC = () => {
 
   return(
     <>
-      <Header>
         <img src={logo} alt="Github Logo"/>
-      </Header>
-
-      <Title>Procure por uma oportunidade de emprego</Title>
+      <Title>Busque uma oportunidade de emprego em tecnologia</Title>
 
       <Form hasError={!!inputError} onSubmit={handleAddJobs}>
           <input
             value={newRepo}
             onChange={ (e) => setNewRepo(e.target.value)}
             placeholder="Pesquise por título, benefícios, empresas, expertise"/>
+
           <button type="submit" >
               <FiSearch size={20}/>
               Pesquisar
           </button>
+
       </Form >
 
         <br></br>
-        { inputError && <Error>{inputError}</Error>}
+        { inputError && <Error><FiAlertTriangle size={30}/>{inputError}</Error>}
 
-        <p>Veja abaixo o resultado da sua pesquisa</p>
-
-      <Repositories>
+      <Jobs>
           <Subtitle>
-           <FiGithub size={35}/>
-           Resultados da sua pesquisa
+            <FiGithub size={35}/>
+            Resultados da sua pesquisa
           </Subtitle>
-              {repositories.map( repository =>(
+
+              {jobs.map( repository =>(
                 <Link key={repository.id} to={`/job/${repository.title}`}>
                 <img
                   src={repository.company_logo}
-                  alt="logo"
+                  alt="companhiaLogo"
                 />
                 <div>
                   <strong>{repository.title}</strong>
                   <p>{repository.company}</p>
-                  <p>Tipo da vaga: <strong className="typeJob">{repository.type}</strong></p>
+                  <p>Tipo da vaga:
+                    <strong className="typeJob"> {repository.type}</strong>
+                  </p>
+                    <p>Dinponível desde: <strong>{repository.created_at}</strong></p>
                 </div>
-
                 <FiChevronRight  size={25}/>
               </Link>
         ))}
-      </Repositories>
+      </Jobs>
 
       <Footer>
           <div>
@@ -148,13 +158,11 @@ const Dasboard: React.FC = () => {
                 Documentação API
               </button>
             </Link>
-
-            <span>
-              Feito com amor 😍
-              <span>Por Lucas Silva 😍</span>
-            </span>
-
-
+            <Link to={'/api'}>
+              <button type="submit" >
+                How To Works
+              </button>
+            </Link>
           </div>
       </Footer>
 

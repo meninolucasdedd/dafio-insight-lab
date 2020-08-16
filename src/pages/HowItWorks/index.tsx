@@ -1,10 +1,9 @@
 import React from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
-import { FiChevronLeft, FiMail} from 'react-icons/fi';
+import { FiChevronLeft} from 'react-icons/fi';
 
 
 import logoImg from '../../assets/octocat.svg';
-import HowToOne from '../../assets/howtoone.png'
 import { Header, HowItWorkInfo, Subtitle, Card, } from './styles';
 
 

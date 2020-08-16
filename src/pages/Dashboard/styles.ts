@@ -5,65 +5,14 @@ interface FormProps{
   hasError: boolean;
 }
 
-export const Header = styled.header`
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  a{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #3D3D4D;
-    font-size: 25px;
-
-    &:hover{
-      color: #666;
-    }
-
-    svg{
-      margin-right: 4px;
-    }
-
-    button{
-      width: 210px;
-      height: 70px;
-      background: #04D361;
-      border-radius: 5px 5px 5px 5px;
-      border:0;
-      color: #fff;
-      font-weight: bold;
-      transition: background-color 0.2s;
-      cursor: pointer;
-
-      svg{
-        margin-right: 10px;
-      }
-
-      &:hover{
-        background: ${shade(0.2, '#04D361')}
-      }
-
-    }
-  }
-
-`;
-
-export const HowItWorkInfo = styled.section`
-  margin-top: 70px;
-  max-width: 700px;
-  text-align: justify;
-
-
-`;
 export const Title = styled.h1`
   font-size: 40px;
-  color: #3A3A3A;
-  max-width: 700px;
+  color: #fff;
+  max-width: 600px;
   line-height: 56px;
 
-  margin-top: 40px;
+  margin-top: 80px;
 
 
 `
@@ -71,9 +20,9 @@ export const Subtitle = styled.h2`
   font-size: 25px;
   max-width: 700px;
   line-height: 56px;
-  font-family: Poppins, sans-serif;
+  font-family: Archivo, sans-serif;
   padding-bottom: 10px;
-  color: #3D3D4D;
+  color: #fff;
 
   svg{
     display: flex;
@@ -88,6 +37,9 @@ export const Form = styled.form<FormProps>`
   max-width: 700px;
 
   display: flex;
+  & + input{
+    padding-right: 16px;
+  }
 
   input {
     flex: 1;
@@ -110,9 +62,10 @@ export const Form = styled.form<FormProps>`
   }
 
   button{
+    align-items: center;
     width: 210px;
     height: 70px;
-    background: #470393;
+    background: #04D361;
     border-radius: 0px 5px 5px 0px;
     border:0;
     color: #FFF;
@@ -120,36 +73,41 @@ export const Form = styled.form<FormProps>`
     transition: background-color 0.2s;
     cursor: pointer;
 
-
-      > svg{
-        flex: 1 ;
-        justify-content: center;
+      > svg {
         margin-right: 10px;
         padding-top: 2px;
-
-
-
       }
 
     &:hover{
-      background: ${shade(0.2, '#470393')}
+      background: ${shade(0.2, '#04D361')}
     }
   }
 `
 
 export const Error = styled.span`
   display: block;
+  background: #fff;
+  width: 700px;
+  padding: 20px;
+  display: block;
   color: #E60F0C;
   margin-top: 8px;
+  font-weight: bold;
+  border-radius: 5px 5px 5px 5px;
+
+  > svg{
+    margin-right: 16px;
+  }
 
 `;
 
 
-export const Repositories = styled.div`
+export const Jobs = styled.div`
   margin-top: 80px;
   max-width: 700px;
 
-  a{
+  a {
+
     background: #fff;
     border-radius: 5px;
     width: 100%;
@@ -178,7 +136,6 @@ export const Repositories = styled.div`
     div {
       margin: 16px;
       flex: 1;
-
 
       strong{
         font-size: 20px;

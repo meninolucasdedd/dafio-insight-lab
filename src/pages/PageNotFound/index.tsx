@@ -1,6 +1,6 @@
 import React from 'react';
 import {  Link } from 'react-router-dom';
-import {FiChevronLeft,  FiMinimize2} from 'react-icons/fi';
+import {FiChevronLeft} from 'react-icons/fi';
 
 
 import logoImg from '../../assets/octocat.svg';
@@ -23,10 +23,13 @@ const PageNotFound: React.FC = () =>{
         </Link>
       </Header>
       <PageError>
-        <Subtitle>
-           Essa Página não existe
-
+      <Subtitle>
+          Error 404
         </Subtitle>
+        <Subtitle>
+          Opa! Essa Página não existe.
+        </Subtitle>
+        <Subtitle> Tente novamente.</Subtitle>
     </PageError>
     </>
   )
