@@ -32,7 +32,7 @@ const Job: React.FC = () =>{
   const { params } = useRouteMatch<JobParams>();
 
   useEffect(()=>{
-      api.get(`/positions.json?${params.repository}&page=1`,
+      api.get(`/positions/${params.repository}.json`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -42,11 +42,7 @@ const Job: React.FC = () =>{
       ).then(response=>{
         console.log(response.data)
           setRepository(response.data)
-      });
-
-      api.get(`${params.repository}`).then(response=>{
-          setRepository(response.data)
-      });
+      })
 
   },[params.repository])
 
@@ -92,22 +88,23 @@ const Job: React.FC = () =>{
              <span>{repository.type}</span>
             </li>
         </ul>
+        <Card>
+          <a>
+            <div>
+            <strong>{repository?.description}</strong>
+              <div>
+                <p>A descrição vem da APU</p>
+              </div>
+            </div>
+            <FiChevronRight  size={20}/>
+          </a>
+      </Card>
         </JobInfo>
       )}
 
 
 
-    <Card>
-    <a>
-      <div>
-      <strong>{repository?.description}</strong>
-        <div>
-          <p>A descrição vem da APU</p>
-        </div>
-      </div>
-      <FiChevronRight  size={20}/>
-    </a>
-    </Card>
+
     </>
   )
 }

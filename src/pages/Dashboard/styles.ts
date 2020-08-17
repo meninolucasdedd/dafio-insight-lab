@@ -1,10 +1,24 @@
-import styled, { css } from 'styled-components';
+import styled, { keyframes,css } from 'styled-components';
 import {shade} from 'polished';
 
 interface FormProps{
   hasError: boolean;
+
+
 }
 
+interface ButtonProps{
+  loading: boolean;
+}
+
+const rotate = keyframes`
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+`;
 
 export const Title = styled.h1`
   font-size: 40px;
@@ -213,3 +227,35 @@ export const Footer = styled.footer`
       }
 }
 `
+
+export const ButtonSubmit = styled.button<ButtonProps>`
+
+    align-items: center;
+    width: 210px;
+    height: 70px;
+    background: #04D361;
+    border-radius: 0px 5px 5px 0px;
+    border:0;
+    color: #FFF;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    cursor: pointer;
+
+      > svg {
+        margin-right: 10px;
+        padding-top: 2px;
+      }
+
+    &:hover{
+      background: ${shade(0.2, '#04D361')}
+    }
+
+    ${props =>
+		props.loading &&
+		css`
+			svg {
+				animation: ${rotate} 2s linear infinite;
+			}
+		`}
+
+`;

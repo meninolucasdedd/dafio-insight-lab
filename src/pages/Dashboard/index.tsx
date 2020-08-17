@@ -8,11 +8,13 @@ import {
   FiChevronRight,
   FiGithub,
   FiSearch,
-  FiAlertTriangle
+  FiAlertTriangle,
+  FiLoader
 } from 'react-icons/fi';
 
 
 import {
+  ButtonSubmit,
   Title,
   Subtitle,
   Form,
@@ -35,27 +37,26 @@ interface Repository {
 }
 
 const Dasboard: React.FC = () => {
-
+  const [loading, setLoading] = useState(false);
   const [newRepo, setNewRepo] = useState('');
   const [inputError, setInputError] = useState('');
   const [jobs, setJobs] = useState<Repository[]>(() =>{
   const storagedRepositories = localStorage.getItem( '@GithubJobsExplorer:repositories');
-
 
     if(storagedRepositories){
       return JSON.parse(storagedRepositories);
     }else{
       return [];
     }
-  });
+    });
 
 
-  useEffect(() => {
-    localStorage.setItem(
+   useEffect(() => {
+      localStorage.setItem(
       '@GithubJobsExplorer:repositories',
         JSON.stringify(jobs),
       );
-  }, [jobs])
+    }, [jobs]);
 
 
 
@@ -64,10 +65,13 @@ const Dasboard: React.FC = () => {
 
       event.preventDefault();
 
+
     if(!newRepo){
       setInputError('OPS! Você precisa inserir o título/descrição da vaga para pesquisar. Tente novamente!');
       return;
     }
+
+    setLoading(true);
 
     try {
       const response = await api.get(`positions.json?description=${newRepo}`,
@@ -85,6 +89,7 @@ const Dasboard: React.FC = () => {
 
       console.log(response.data);
 
+
       setNewRepo('');
       setInputError('');
 
@@ -96,7 +101,10 @@ const Dasboard: React.FC = () => {
       else{
         setInputError('Erro na busca por este termo')
       }
+
     }
+
+      setLoading(false);
   }
 
   return(
@@ -110,10 +118,16 @@ const Dasboard: React.FC = () => {
             onChange={ (e) => setNewRepo(e.target.value)}
             placeholder="Pesquise por título, benefícios, empresas, expertise"/>
 
-          <button type="submit" >
-              <FiSearch size={20}/>
-              Pesquisar
-          </button>
+          <ButtonSubmit  disabled ={loading} loading={loading}  >
+              {loading ? (<FiLoader size={30} color="#fff"/>):
+                (
+                  <>
+                     <FiSearch size={20}/>
+                     Pesquisar
+                  </>
+                )
+              }
+          </ButtonSubmit>
 
       </Form >
 
