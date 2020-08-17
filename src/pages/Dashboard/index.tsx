@@ -61,6 +61,7 @@ const Dasboard: React.FC = () => {
 
   async function handleAddJobs( event: FormEvent<HTMLFormElement>):
    Promise<void>{
+
       event.preventDefault();
 
     if(!newRepo){
@@ -100,7 +101,7 @@ const Dasboard: React.FC = () => {
 
   return(
     <>
-        <img src={logo} alt="Github Logo"/>
+      <img src={logo} alt="Github Logo"/>
       <Title>Busque uma oportunidade de emprego em tecnologia</Title>
 
       <Form hasError={!!inputError} onSubmit={handleAddJobs}>
@@ -126,7 +127,7 @@ const Dasboard: React.FC = () => {
           </Subtitle>
 
               {jobs.map( repository =>(
-                <Link key={repository.id} to={`/job/${repository.title}`}>
+                <Link key={repository.id} to={`/job/${repository.id}`}>
                 <img
                   src={repository.company_logo}
                   alt="companhiaLogo"

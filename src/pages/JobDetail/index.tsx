@@ -53,7 +53,6 @@ const Job: React.FC = () =>{
   return(
     <>
     <Header>
-
       <img src={logoVertical} alt="Avatar Empresa"/>
         <Link to="/">
           <FiChevronLeft size={16}/>
