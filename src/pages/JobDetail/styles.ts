@@ -89,6 +89,7 @@ export const JobInfo = styled.section`
           svg {
             color: #fff;
           }
+
           a{
             text-decoration: none;
             color: #fff
@@ -147,11 +148,13 @@ export const Card = styled.div`
       }
 
       p{
+        width: 600px;
         text-align:justify;
         font-size: 18px;
         color: #A8A8B3;
         margin-top: 4px;
       }
+
     }
 
     svg{

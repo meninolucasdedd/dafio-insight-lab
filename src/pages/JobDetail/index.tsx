@@ -44,7 +44,7 @@ const Job: React.FC = () =>{
           setRepository(response.data)
       })
 
-  },[params.repository])
+  },[params.repository]);
 
   return(
     <>
