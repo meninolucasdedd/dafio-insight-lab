@@ -142,19 +142,19 @@ const Dasboard: React.FC = () => {
 
               {jobs.map( repository =>(
                 <Link key={repository.id} to={`/job/${repository.id}`}>
-                <img
-                  src={repository.company_logo}
-                  alt="companhiaLogo"
-                />
-                <div>
-                  <strong>{repository.title}</strong>
-                  <p>{repository.company}</p>
-                  <p>Tipo da vaga:
-                    <strong className="typeJob"> {repository.type}</strong>
-                  </p>
-                  <p>{repository.location}</p>
-                    <p>Dinponível desde: <strong>{repository.created_at}</strong></p>
-                </div>
+                  <img
+                    src={repository.company_logo}
+                    alt="companhiaLogo"
+                  />
+                  <div>
+                    <strong>{repository.title}</strong>
+                    <p>{repository.company}</p>
+                    <p>Tipo da vaga:
+                      <strong className="typeJob"> {repository.type}</strong>
+                    </p>
+                    <p>{repository.location}</p>
+                      <p>Dinponível desde: <strong>{repository.created_at}</strong></p>
+                  </div>
                 <FiChevronRight  size={25}/>
               </Link>
         ))}

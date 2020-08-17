@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
-import { FiChevronLeft, FiChevronRight, FiMapPin, FiClock, FiUserPlus} from 'react-icons/fi';
+import { FiChevronLeft,  FiMapPin, FiClock} from 'react-icons/fi';
 import api from '../../services/api';
 
 import logoVertical from '../../assets/vertical.png';
@@ -15,19 +15,19 @@ interface JobParams {
 
 interface Repository {
   id: string;
+  title: string;
   company: string;
   company_logo: string;
   company_url: string;
   location: string;
   type: string;
   description: string;
-  how_to_aply: string;
+  how_to_apply: string;
 
  }
 
 const Job: React.FC = () =>{
   const [repository, setRepository] = useState<Repository | null>(null);
-  const [job, setJob] = useState([]);
 
   const { params } = useRouteMatch<JobParams>();
 
@@ -59,9 +59,9 @@ const Job: React.FC = () =>{
         <JobInfo>
          <header>
           <img src={repository.company_logo}
-          alt={repository.company} />
+            alt={repository.company} />
           <div>
-            <strong>{params.repository}</strong>
+            <strong>{repository.title}</strong>
             <p>Veja os detalhes da vaga abaixo</p>
          </div>
        </header>
@@ -70,33 +70,33 @@ const Job: React.FC = () =>{
           <li>
               <button>
                 <strong>
-                  <FiUserPlus size={50}></FiUserPlus>
+                <FiClock size={50}/>
                 </strong>
-                  <a href="#">Cadindatar-se</a>
+                <a>{repository.type}</a>
               </button>
             </li>
             <li>
-              <strong>
-                <FiMapPin size={50} />
-              </strong>
-              <span>{repository.location}</span>
-            </li>
-            <li>
-              <strong>
-                <FiClock size={50}></FiClock>
-              </strong>
-             <span>{repository.type}</span>
+              <button>
+                <strong>
+                  <FiMapPin size={50} />
+                </strong>
+                <a>{repository.location}</a>
+              </button>
+
             </li>
         </ul>
         <Card>
           <a>
             <div>
-            <strong>{repository?.description}</strong>
+            <strong>Detalhes</strong>
               <div>
-                <p>A descrição vem da APU</p>
+                <p>{repository.description}</p>
               </div>
+              <hr></hr>
+              <br></br>
+              <strong>Como aplicar?</strong>
+              <div>{repository.how_to_apply}</div>
             </div>
-            <FiChevronRight  size={20}/>
           </a>
       </Card>
         </JobInfo>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {shade} from 'polished';
+
 
 export const Header = styled.header`
   display: flex;
@@ -19,8 +19,11 @@ export const Header = styled.header`
       color: #fff;
     }
 
-
   }
+
+  p{
+      color: #fff;
+    }
 
 `;
 
@@ -46,6 +49,7 @@ export const JobInfo = styled.section`
       }
 
       p {
+        text-align: justify;
         font-size: 18px;
         color: #A8A8B3;
         margin-top: 4px;
@@ -65,14 +69,14 @@ export const JobInfo = styled.section`
     }
 
     li {
-      strong{
+      strong {
 
         display: block;
         font-size: 36px;
         color:#fff;
       }
 
-      button{
+      button {
           width: 140px;
           height: 140px;
           background: #04D361;
@@ -81,19 +85,16 @@ export const JobInfo = styled.section`
           font-weight: bold;
           transition: background-color 0.2s;
           cursor: pointer;
-          svg{
+
+          svg {
             color: #fff;
           }
-
-          &:hover{
-           background: ${shade(0.2, '#04D361')}
-          }
-
           a{
             text-decoration: none;
             color: #fff
           }
         }
+
 
       span{
         display: block;
@@ -113,8 +114,8 @@ export const Card = styled.div`
 
 
   a{
-
     background: #fff;
+    max-width: 700px;
     border-radius: 5px;
     width: 100%;
     padding: 24px;
@@ -146,6 +147,7 @@ export const Card = styled.div`
       }
 
       p{
+        text-align:justify;
         font-size: 18px;
         color: #A8A8B3;
         margin-top: 4px;
