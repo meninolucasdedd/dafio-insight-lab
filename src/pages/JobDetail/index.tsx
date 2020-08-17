@@ -32,7 +32,15 @@ const Job: React.FC = () =>{
   const { params } = useRouteMatch<JobParams>();
 
   useEffect(()=>{
-      api.get(`/positions.json?description=${params.repository}`).then(response=>{
+      api.get(`/positions.json?${params.repository}&page=1`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      }
+      ).then(response=>{
+        console.log(response.data)
           setRepository(response.data)
       });
 
@@ -76,7 +84,7 @@ const Job: React.FC = () =>{
               <strong>
                 <FiMapPin size={50} />
               </strong>
-              <span>Berlim</span>
+              <span>{repository.location}</span>
             </li>
             <li>
               <strong>

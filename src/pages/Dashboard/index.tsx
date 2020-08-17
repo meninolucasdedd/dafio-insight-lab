@@ -126,7 +126,7 @@ const Dasboard: React.FC = () => {
           </Subtitle>
 
               {jobs.map( repository =>(
-                <Link key={repository.id} to={`/job/${repository.id}`}>
+                <Link key={repository.id} to={`/job/${repository.title}`}>
                 <img
                   src={repository.company_logo}
                   alt="companhiaLogo"
