@@ -9,7 +9,7 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #3D3D4D;
+    color: #fff;
     font-size: 25px;
 
 
@@ -20,6 +20,7 @@ export const Header = styled.header`
     svg{
       margin-right: 4px;
     }
+
   }
 
 `;
@@ -28,6 +29,10 @@ export const HowItWorkInfo = styled.section`
   margin-top: 70px;
   max-width: 700px;
   text-align: justify;
+
+  h2{
+    color: #fff;
+  }
 
 
 `;
@@ -38,13 +43,14 @@ export const Subtitle = styled.h2`
   line-height: 56px;
   font-family: Poppins, sans-serif;
   padding-bottom: 10px;
-  color: #3D3D4D;
+  color: #fff;
 
   svg{
     display: flex;
     align-items: center;
 
   }
+
 `
 
 export const Card = styled.div`

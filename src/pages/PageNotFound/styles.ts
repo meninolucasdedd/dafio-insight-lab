@@ -28,14 +28,18 @@ export const PageError = styled.section`
   margin-top: 50px;
   max-width: 700px;
   text-align: center;
+  > svg{
+    color: #fff;
+  }
 `;
 
 export const Subtitle = styled.h2`
-  font-size: 70px;
+  font-size: 50px;
   max-width: 700px;
   line-height: 80px;
   font-family: Poppins, sans-serif;
   color: #fff;
+
 
 
 `

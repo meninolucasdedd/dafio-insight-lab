@@ -9,7 +9,7 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #3D3D4D;
+    color: #FFF;
     font-size: 25px;
     transition: color 0.2s;
 
@@ -25,9 +25,15 @@ export const Header = styled.header`
 `;
 
 export const HowItWorkInfo = styled.section`
-  margin-top: 70px;
+  margin-top: 60px;
   max-width: 700px;
-  text-align: justify
+  text-align: justify;
+
+  > h2{
+    font-family: Archivo, sans-serif;
+    line-height: 30px;
+    color: #fff;
+  }
 
 
 `;
@@ -38,7 +44,7 @@ export const Subtitle = styled.h2`
   line-height: 56px;
   font-family: Poppins, sans-serif;
   padding-bottom: 10px;
-  color: #3D3D4D;
+  color: #FFF;
 
   svg{
     display: flex;
@@ -91,7 +97,7 @@ export const Card = styled.div`
 
 
 
-      P {
+      p{
         font-size: 18px;
         color: #A8A8B3;
         margin-top: 4px;
@@ -103,7 +109,6 @@ export const Card = styled.div`
       margin-left: auto;
       color: #cbcbd6;
     }
-
 
 
   }

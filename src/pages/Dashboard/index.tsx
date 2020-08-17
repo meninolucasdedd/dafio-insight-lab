@@ -126,7 +126,7 @@ const Dasboard: React.FC = () => {
           </Subtitle>
 
               {jobs.map( repository =>(
-                <Link key={repository.id} to={`/job/${repository.title}`}>
+                <Link key={repository.id} to={`/job/${repository.id}`}>
                 <img
                   src={repository.company_logo}
                   alt="companhiaLogo"
@@ -137,6 +137,7 @@ const Dasboard: React.FC = () => {
                   <p>Tipo da vaga:
                     <strong className="typeJob"> {repository.type}</strong>
                   </p>
+                  <p>{repository.location}</p>
                     <p>Dinponível desde: <strong>{repository.created_at}</strong></p>
                 </div>
                 <FiChevronRight  size={25}/>
@@ -149,7 +150,7 @@ const Dasboard: React.FC = () => {
           <img src={logoImg} alt="Github Logo"/>
             <a href='https://jobs.github.com/post'>
               <button type="submit" >
-                Publique no Git
+                Publique no GitJobs
               </button>
             </a>
 
@@ -158,9 +159,9 @@ const Dasboard: React.FC = () => {
                 Documentação API
               </button>
             </Link>
-            <Link to={'/api'}>
-              <button type="submit" >
-                How To Works
+            <Link to={'/howitwork'}>
+              <button type="button" >
+                How It Works
               </button>
             </Link>
           </div>

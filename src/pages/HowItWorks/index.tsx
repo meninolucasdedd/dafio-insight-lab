@@ -27,7 +27,9 @@ const HowItWorks: React.FC = () =>{
          GitHub Jobs é um ótimo lugar para atrair os melhores talentos técnicos para os cargos de desenvolvimento de software aberto da sua empresa.
       </h2>
       <br></br>
-      <h3>Veja como:</h3>
+      <h2> Veja como:</h2>
+
+
 
       <Card>
     <Link to={'/'}>

@@ -14,7 +14,7 @@ const Routes: React.FC = () =>(
     <Route  path="/api" component={api}/>
     <Route  path="/job/:repository+" component={Job}/>
     <Route  path="/howitwork" component={howitwork}/>
-    <Route path="*" redirect component={pagenotfound} />
+    <Route path="*" component={pagenotfound} />
 
   </Switch>
 )

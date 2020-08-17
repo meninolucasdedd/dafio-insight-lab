@@ -3,17 +3,15 @@ import { useRouteMatch, Link } from 'react-router-dom';
 import { FiChevronLeft, FiChevronRight, FiMapPin, FiClock, FiUserPlus} from 'react-icons/fi';
 import api from '../../services/api';
 
-import logoImg from '../../assets/octocat.svg';
 import logoVertical from '../../assets/vertical.png';
 
 import { Header, JobInfo, Card } from './styles';
 
 
-interface RepositoryParams {
+interface JobParams {
   repository: string;
 
 }
-
 
 interface Repository {
   id: string;
@@ -23,6 +21,7 @@ interface Repository {
   location: string;
   type: string;
   description: string;
+  how_to_aply: string;
 
  }
 
@@ -30,16 +29,17 @@ const Job: React.FC = () =>{
   const [repository, setRepository] = useState<Repository | null>(null);
   const [job, setJob] = useState([]);
 
-  const { params } = useRouteMatch<RepositoryParams>();
+  const { params } = useRouteMatch<JobParams>();
 
   useEffect(()=>{
-      api.get(`${params.repository}`).then(response=>{
-        console.log(response.data)
-      })
+      api.get(`/positions.json?description=${params.repository}`).then(response=>{
+          setRepository(response.data)
+      });
 
-      api.get(`${params.repository}/positions`).then(response=>{
-        console.log(response.data)
-      })
+      api.get(`${params.repository}`).then(response=>{
+          setRepository(response.data)
+      });
+
   },[params.repository])
 
   return(
@@ -52,48 +52,52 @@ const Job: React.FC = () =>{
             Voltar
         </Link>
     </Header>
+      { repository && (
+        <JobInfo>
+         <header>
+          <img src={repository.company_logo}
+          alt={repository.company} />
+          <div>
+            <strong>{params.repository}</strong>
+            <p>Veja os detalhes da vaga abaixo</p>
+         </div>
+       </header>
 
-    <JobInfo>
-      <header>
-        <img src="https://avatars0.githubusercontent.com/u/27828411?s=460&u=d62a87ca26c7062bb9284972dc83ca1fe926e658&v=4"
-        alt="avatar" />
-        <div>
-          <strong>{params.repository}</strong>
-          <p>Veja os detalhes da vaga abaixo</p>
-        </div>
-      </header>
-      <ul>
-      <li>
-          <button>
-            <strong>
-              <FiUserPlus size={50}></FiUserPlus>
-            </strong>
-              <a href="#">Cadindatar-se</a>
-          </button>
-        </li>
-        <li>
-          <strong>
-            <FiMapPin size={50} />
-          </strong>
-          <span>Berlim</span>
-        </li>
-        <li>
-          <strong>
-            <FiClock size={50}></FiClock>
-          </strong>
-          <span>Full Time</span>
-        </li>
-      </ul>
-    </JobInfo>
+        <ul>
+          <li>
+              <button>
+                <strong>
+                  <FiUserPlus size={50}></FiUserPlus>
+                </strong>
+                  <a href="#">Cadindatar-se</a>
+              </button>
+            </li>
+            <li>
+              <strong>
+                <FiMapPin size={50} />
+              </strong>
+              <span>Berlim</span>
+            </li>
+            <li>
+              <strong>
+                <FiClock size={50}></FiClock>
+              </strong>
+             <span>{repository.type}</span>
+            </li>
+        </ul>
+        </JobInfo>
+      )}
+
+
+
     <Card>
     <a>
       <div>
-        <strong>Descrição da vaga</strong>
+      <strong>{repository?.description}</strong>
         <div>
           <p>A descrição vem da APU</p>
         </div>
       </div>
-
       <FiChevronRight  size={20}/>
     </a>
     </Card>
