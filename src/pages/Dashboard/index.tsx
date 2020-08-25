@@ -4,6 +4,7 @@ import api from '../../services/api';
 
 import logoImg from '../../assets/octocat.svg';
 import logo from '../../assets/logo.png'
+
 import {
   FiChevronRight,
   FiGithub,
@@ -12,6 +13,7 @@ import {
   FiLoader
 } from 'react-icons/fi';
 
+import Swal from 'sweetalert2';
 
 import {
   ButtonSubmit,
@@ -46,6 +48,7 @@ const Dasboard: React.FC = () => {
     if(storagedRepositories){
       return JSON.parse(storagedRepositories);
     }else{
+
       return [];
     }
     });
@@ -60,14 +63,13 @@ const Dasboard: React.FC = () => {
 
 
 
-  async function handleAddJobs( event: FormEvent<HTMLFormElement>):
-   Promise<void>{
+  async function handleAddJobs( event: FormEvent<HTMLFormElement>): Promise<void> {
 
       event.preventDefault();
 
 
     if(!newRepo){
-      setInputError('OPS! Você precisa inserir o título/descrição da vaga para pesquisar. Tente novamente!');
+      setInputError('OPS! Você precisa inserir o título/descrição da vaga para pesquisar');
       return;
     }
 
@@ -94,6 +96,7 @@ const Dasboard: React.FC = () => {
       setInputError('');
 
     } catch(err){
+
 
       if(err === 404){
         setInputError('Limite da api atingido')

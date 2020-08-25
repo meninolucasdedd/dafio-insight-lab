@@ -32,4 +32,15 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: #04D361;
+  }
+
+
 `;
