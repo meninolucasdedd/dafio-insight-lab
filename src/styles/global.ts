@@ -4,7 +4,9 @@ import assetsdesign from '../assets/assetsdesign.svg'
 
 
 export default createGlobalStyle`
+
   *{
+
     margin:0;
     padding:0;
     outline: 0;
@@ -36,7 +38,7 @@ export default createGlobalStyle`
     width: 5px;
   }
 
-::-webkit-scrollbar-thumb {
+  ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 5px;
     border-radius: 5px;
     background: #04D361;
